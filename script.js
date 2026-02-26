@@ -33,6 +33,24 @@ function handleRangeUpdate(){
 	video[this.name]=this.value;
 }
 
+function skip(){
+	video.currentTime+=parseFloat(this.dataset.skip);
+}
+
+video.addEventListener("click",togglePlay);
+video.addEventListener("play",updateButton);
+video.addEventListener("pause",updateButton);
+video.addEventListener("timeupdate",updateProgress);
+
+toggle.addEventListener("click",togglePlay);
+progress.addEventListener("click",setProgress);
+
+volume.addEventListener("input",handleRangeUpdate);
+playbackSpeed.addEventListener("input",handleRangeUpdate);
+
+skipButtons.forEach(button=>
+	button.addEventListener("click",skip)
+);
 
 
 
