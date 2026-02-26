@@ -16,7 +16,7 @@ function togglePlay(){
 	}
 }
 function updateButton(){
-	toggle.textContent=vide.paused?"►":"❚ ❚";
+	toggle.textContent=video.paused?"►":"❚ ❚";
 }
 
 function updateProgress(){
