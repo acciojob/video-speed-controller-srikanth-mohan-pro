@@ -1,9 +1,39 @@
-const inputs = document.querySelectorAll('.controls input');
+const player=document.querySelector(".player");
+const video=player.querySelector("video");
+const toggle=player.querySelector(".toggle");
+const progress=player.querySelector(".progress");
+const progressFilled=player.querySelector(".progress__filled");
+const volume=player.querySelector('input[name="volume"]');
+const playbackSpeed=player.querySelector('input[name="playbackRate"]')
+const skipButtons=player.querySelectorAll("[data-skip]");
 
-    function handleUpdate() {
-      const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-    }
+function togglePlay(){
+	if(video.paused){
+		video.play();
+	}
+	else{
+		video.pause();
+	}
+}
+function updateButton(){
+	toggle.textContent=vide.paused?"►":"❚ ❚";
+}
 
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+function updateProgress(){
+	const percent=(video.currentTime/video.duration)*100;
+	progressFilled.style.flexBasis=`${percent}%`;
+}
+
+function setProgress(e){
+	const scrubTime=(e.offsetX/progress.offsetWidth)*video.duration;
+	video.currentTime=scrubTime;
+}
+
+function handleRangeUpdate(){
+	video[this.name]=this.value;
+}
+
+
+
+
+
